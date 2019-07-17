@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AKL</title>
+</head>
+<body>
+    <div>
+        <img id="stream1" src="http://192.168.3.113:8000/stream.mjpg" style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;" autoplay onclick="changeVideo()"></img>
+    </div>
+    <script type="text/javascript">
+        var playedVideo = "192.168.3.113";
+
+        function changeVideo(){
+            if(playedVideo == "192.168.3.113"){
+                playedVideo = "192.168.3.114";
+            }
+            else if(playedVideo == "192.168.3.114"){
+                playedVideo = "192.168.3.113";
+            }
+            else{
+                playedVideo = "192.168.3.113";
+            }
+            document.getElementById("stream1").src = "http://" + playedVideo + ":8000/stream.mjpg";
+        }
+    </script>
+</body>
+</html>
