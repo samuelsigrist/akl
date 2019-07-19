@@ -18,38 +18,102 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
-
     .img1{
       width: 1450px;
       top: 177px;
       left: 50px;
     }
-
     .img2{
       width: 250px;
       top: 851px;
-      left: 1575px;
+      left: 1600px;
     }
-
     .kmxlogo{
+      width: 200px;
+      top: 115px;
+      right: 70px;
+      z-index:1;
+    }
+    .kmxlogofull{
       width: 100px;
-      top: 210px;
-      left: 1358px;
+      top: 15px;
+      right: 30px;
+      z-index:1;
     }
-
     .svrlogo{
-      width: 150px;
+      width: 300px;
       top: 260px;
-      left: 1325px;
+      right: 25px;
+      z-index:1;
+    }
+    .svrlogofull{
+      width: 150px;
+      top: 110px;
+      right: 5px;
+      z-index:1;
+    }
+    .inflogo{
+      width: 250px;
+      top: 190px;
+      right: 48px;
+      z-index:1;
+    }
+    .inflogofull{
+      width: 150px;
+      top: 60px;
+      right: -2px;
+      z-index:1;
     }
 
+    #fullscreenvideo{
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index:0;
+    }
     </style>
-      <div class="bg w3-display-container">
-        <img class="img1 w3-display-topright w3-margin" src="images/img.jpg"></img>
-        <img class="img2 w3-display-topright w3-margin" src="images/img.jpg"></img>
-        <img class="kmxlogo w3-display-topright w3-margin" src="images/kmx.png"></img>
-        <img class="svrlogo w3-display-topright w3-margin" src="images/ser.png"></img>
-      </div>
+    <script type="text/javascript">
 
+      function changeSrc(Elementid1, Elementid2){
+        var src1 = document.getElementById(Elementid1).src;
+        var src2 = document.getElementById(Elementid2).src;
+        document.getElementById(Elementid1).src = src2;
+        document.getElementById(Elementid2).src = src1;
+      } 
+      
+      function enterFullscreen(element) {
+        document.getElementById("fullscreenvideo").src = document.getElementById(element).src;
+        document.getElementById("fullscreenvideo").hidden = false;
+        document.getElementById("logo1").classList.remove("w3-margin");
+        document.getElementById("logo1").classList.add("kmxlogofull");
+        document.getElementById("logo2").classList.remove("w3-margin");
+        document.getElementById("logo2").classList.add("svrlogofull");
+        document.getElementById("logo3").classList.remove("w3-margin");
+        document.getElementById("logo3").classList.add("inflogofull");
+      }
+
+      function exit() {
+        document.getElementById("fullscreenvideo").hidden = true;
+        document.getElementById("logo1").classList.add("w3-margin");
+        document.getElementById("logo1").classList.remove("kmxlogofull");
+        document.getElementById("logo2").classList.add("w3-margin");
+        document.getElementById("logo2").classList.remove("svrlogofull");
+        document.getElementById("logo3").classList.add("w3-margin");
+        document.getElementById("logo3").classList.remove("inflogofull");
+      }
+    </script> 
+    <div class="bg w3-display-container">
+      <img id="image1" class="img1 w3-display-topright w3-margin" src="images/Quelle1.png" onclick="enterFullscreen('image1')"></img>
+      <img id="image2" class="img2 w3-display-topright w3-margin" src="images/Quelle2.png" onclick="changeSrc('image1', 'image2')"></img>
+      <img id="logo1" class="kmxlogo w3-display-topright w3-margin" src="images/kmx.png"></img>
+      <img id="logo2" class="svrlogo w3-display-topright w3-margin" src="images/ser.png"></img>
+      <img id="logo3" class="inflogo w3-display-topright w3-margin" src="images/inf.png"></img>
+    </div>
+    <div onclick="exit()">
+      <img id="fullscreenvideo" hidden></img>
+    </div>
   </body>
 </html>
