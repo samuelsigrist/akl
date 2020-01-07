@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>akl layout 1</title>
+    <link rel="stylesheet" href="css/w3.css">
+  </head>
+  <body>
+    <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+    .bg {
+      background-image: url("images/1t.PNG");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .img1{
+      width: 1450px;
+      top: 150px;
+      left: 50px;
+    }
+    .img2{
+      width: 240px;
+      top: 750px;
+      right: 50px;
+    }
+    .kmxlogo{
+      width: 200px;
+      top: 165px;
+      right: 70px;
+      z-index:1;
+    }
+    .kmxlogofull{
+      width: 150px;
+      top: 30px;
+      right: 35px;
+      z-index:1;
+    }
+    .svrlogo{
+      width: 330px;
+      top: 250px;
+      right: 10px;
+      z-index:1;
+    }
+    .svrlogofull{
+      width: 230px;
+      top: 80px;
+      right: 0px;
+      z-index:1;
+    }
+    .svrvid{
+      top: 1000px;
+      right: 10px;
+      z-index:1;
+    }
+
+    #fullscreenvideo{
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index:0;
+    }
+    </style>
+    <script type="text/javascript">
+
+      function changeSrc(Elementid1, Elementid2){
+        if(document.getElementById(Elementid1).getAttribute('class') == 'img1 w3-display-topright w3-margin')
+        {
+          document.getElementById(Elementid2).setAttribute('onclick', "enterFullscreen('image2')");
+          document.getElementById(Elementid1).setAttribute('onclick', "changeSrc('image1', 'image2')");
+          document.getElementById(Elementid1).setAttribute('class', 'img2 w3-display-topright w3-margin');
+          document.getElementById(Elementid2).setAttribute('class', 'img1 w3-display-topright w3-margin');
+        }
+        else {
+          document.getElementById(Elementid1).setAttribute('onclick', "enterFullscreen('image1')");
+          document.getElementById(Elementid2).setAttribute('onclick', "changeSrc('image1', 'image2')");
+          document.getElementById(Elementid1).setAttribute('class', 'img1 w3-display-topright w3-margin');
+          document.getElementById(Elementid2).setAttribute('class', 'img2 w3-display-topright w3-margin');
+        }
+
+      }
+
+      function enterFullscreen(element) {
+        document.getElementById("fullscreenvideo").src = document.getElementById(element).src;
+        document.getElementById("fullscreenvideo").hidden = false;
+        document.getElementById("logo1").classList.remove("w3-margin");
+        document.getElementById("logo1").classList.add("kmxlogofull");
+        document.getElementById("logo2").classList.remove("w3-margin");
+        document.getElementById("logo2").classList.add("svrlogofull");
+      }
+
+      function exit() {
+        document.getElementById("fullscreenvideo").hidden = true;
+        document.getElementById("logo1").classList.add("w3-margin");
+        document.getElementById("logo1").classList.remove("kmxlogofull");
+        document.getElementById("logo2").classList.add("w3-margin");
+        document.getElementById("logo2").classList.remove("svrlogofull");
+      }
+	function refreshPage() {
+		window.location.reload();
+     }
+    </script>
+    <div class="bg w3-display-container">
+      <img id="image1" class="img1 w3-display-topright w3-margin" src="http://192.168.10.100:8081/" onclick="enterFullscreen('image1')"></img>
+      <img id="image2" class="img2 w3-display-topright w3-margin" src="http://192.168.10.101:8081/" onclick="changeSrc('image1', 'image2')"></img>
+      <img id="logo1" class="kmxlogo w3-display-topright w3-margin" src="images/kmx.png"></img>
+      <img id="logo2" class="svrlogo w3-display-topright w3-margin" src="images/ser.png"></img>
+    </div>
+    <div onclick="exit()">
+      <img id="fullscreenvideo" hidden></img>
+
+      <video width="360" height="240" controls class="svrvid w3-display-topright w3-margin">
+        <source src="Video/servus.mp4">
+      </video>
+
+    </div>
+  </body>
+</html>
