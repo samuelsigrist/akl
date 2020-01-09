@@ -53,9 +53,20 @@
       z-index:1;
     }
     .svrvid{
-      top: 1000px;
-      right: 10px;
+      width: 280px;
+      top: 350px;
+      right: 30px;
       z-index:1;
+    }
+
+    .svrfullvid{
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index:2;
     }
 
     #fullscreenvideo{
@@ -68,8 +79,17 @@
       z-index:0;
     }
     </style>
+    <div class="bg w3-display-container">
+      <img id="image1" class="img1 w3-display-topright w3-margin" src="" onclick="enterFullscreen('image1')"></img>
+      <img id="image2" class="img2 w3-display-topright w3-margin" src="" onclick="changeSrc('image1', 'image2')"></img>
+      <img id="logo1" class="kmxlogo w3-display-topright w3-margin" src="images/kmx.png"></img>
+      <img id="logo2" class="svrlogo w3-display-topright w3-margin" src="images/ser.png"></img>
+      <video autoplay muted full id="Video" src="Video/servus.mp4" class="svrvid w3-display-topright w3-margin" onclick="FullscreenVideo()"></video>
+    </div>
+    <div onclick="exit()">
+      <img id="fullscreenvideo" hidden></img>
+    </div>
     <script type="text/javascript">
-
       function changeSrc(Elementid1, Elementid2){
         if(document.getElementById(Elementid1).getAttribute('class') == 'img1 w3-display-topright w3-margin')
         {
@@ -84,7 +104,6 @@
           document.getElementById(Elementid1).setAttribute('class', 'img1 w3-display-topright w3-margin');
           document.getElementById(Elementid2).setAttribute('class', 'img2 w3-display-topright w3-margin');
         }
-
       }
 
       function enterFullscreen(element) {
@@ -103,23 +122,18 @@
         document.getElementById("logo2").classList.add("w3-margin");
         document.getElementById("logo2").classList.remove("svrlogofull");
       }
-	function refreshPage() {
-		window.location.reload();
-     }
+      function FullscreenVideo(){
+        if(document.getElementById("Video").getAttribute("class") == 'svrvid w3-display-topright w3-margin'){
+          var video = document.getElementById('Video');
+          video.pause();
+          video.currentTime = 0;
+          video.load();
+          document.getElementById("Video").setAttribute('class', "svrfullvid");
+        }
+        else{
+          document.getElementById("Video").setAttribute('class', "svrvid w3-display-topright w3-margin");
+        }
+      }
     </script>
-    <div class="bg w3-display-container">
-      <img id="image1" class="img1 w3-display-topright w3-margin" src="http://192.168.10.100:8081/" onclick="enterFullscreen('image1')"></img>
-      <img id="image2" class="img2 w3-display-topright w3-margin" src="http://192.168.10.101:8081/" onclick="changeSrc('image1', 'image2')"></img>
-      <img id="logo1" class="kmxlogo w3-display-topright w3-margin" src="images/kmx.png"></img>
-      <img id="logo2" class="svrlogo w3-display-topright w3-margin" src="images/ser.png"></img>
-    </div>
-    <div onclick="exit()">
-      <img id="fullscreenvideo" hidden></img>
-
-      <video width="360" height="240" controls class="svrvid w3-display-topright w3-margin">
-        <source src="Video/servus.mp4">
-      </video>
-
-    </div>
   </body>
 </html>
