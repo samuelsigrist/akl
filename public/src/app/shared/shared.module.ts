@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LogoContainerComponent } from './logo-container/logo-container.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
-
+// Custom Imports
+import { MaterialModule } from './material.module';
 
 @NgModule({
-  declarations: [LogoContainerComponent, SidebarComponent],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
-    LogoContainerComponent,
-    SidebarComponent
+    MaterialModule
   ]
 })
 export class SharedModule { }
