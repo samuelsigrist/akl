@@ -1,16 +1,8 @@
-.container {
-    height: 100vh;
-}
-
-
 .horizontal-flex-container {
     display: flex;
     flex-direction: row;
 
     justify-content: space-between;
-
-    padding: 2rem;
     
-
-    border: red 1px dashed;
+    height: 100vh;
 }

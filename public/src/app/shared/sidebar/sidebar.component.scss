@@ -1,13 +1,12 @@
-:host {
-
-    border: red 1px solid;
-}
-
 .vertical-container {
     display: flex;
     flex-direction: column;
 
+    margin: 2rem;
+
     float: right;
+
+    border: red 1px solid;
 
     img {
         margin-bottom: 1rem;
