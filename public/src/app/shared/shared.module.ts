@@ -17,7 +17,8 @@ import { LivestreamPlayerComponent } from './livestream-player/livestream-player
   ],
   exports: [
     MaterialModule,
-    SidebarComponent
+    SidebarComponent,
+    LivestreamPlayerComponent
   ]
 })
 export class SharedModule { }
