@@ -1,4 +1,10 @@
 <div class="vertical-container">
-    <img class="komax_logo" src="../../../assets/images/logo_komax.png" alt="Logo komaxgroup" />
-    <img class="servus_logo" src="../../../assets/images/logo_servus.png" alt="Logo Servus AG" />
+  <app-logo-container></app-logo-container>
+
+
+  <div class="video-container">
+    <app-video-preview [url]="env.videoUrl"></app-video-preview>
+    <app-video-preview [url]="env.camOneUrl"></app-video-preview>
+  </div>
+
 </div>

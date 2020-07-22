@@ -1,22 +1,17 @@
 .vertical-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     margin: 2rem;
 
     float: right;
 
+    height: 90%;
+
     border: red 1px solid;
+}
 
-    img {
-        margin-bottom: 1rem;
-    }
+.video-container {
 
-    .komax_logo {
-        width: 200px;
-    }
-
-    .servus_logo {
-        width: 205px;
-    }
 }

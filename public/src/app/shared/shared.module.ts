@@ -5,11 +5,15 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LivestreamPlayerComponent } from './livestream-player/livestream-player.component';
+import { LogoContainerComponent } from './logo-container/logo-container.component';
+import { VideoPreviewComponent } from './video-preview/video-preview.component';
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    LivestreamPlayerComponent
+    LivestreamPlayerComponent,
+    LogoContainerComponent,
+    VideoPreviewComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +22,8 @@ import { LivestreamPlayerComponent } from './livestream-player/livestream-player
   exports: [
     MaterialModule,
     SidebarComponent,
-    LivestreamPlayerComponent
+    LivestreamPlayerComponent,
+    LogoContainerComponent
   ]
 })
 export class SharedModule { }
