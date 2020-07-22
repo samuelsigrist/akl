@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatVideoModule } from 'mat-video';
 
 // Custom Imports
 import { MaterialModule } from './material.module';
@@ -17,13 +18,15 @@ import { VideoPreviewComponent } from './video-preview/video-preview.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    MatVideoModule
   ],
   exports: [
     MaterialModule,
     SidebarComponent,
     LivestreamPlayerComponent,
-    LogoContainerComponent
+    LogoContainerComponent,
+    MatVideoModule
   ]
 })
 export class SharedModule { }
